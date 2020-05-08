@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
 import UserCreate from './UserCreate';
+import LanguageContext from '../contexts/LanguageContext';
+import ColorContext from '../contexts/ColorContext';
 
 export class App extends Component {
     state = {
-        language: 'english'
-    }
+        language: 'english',
+        color: 'primary'
+    };
 
     onLanguageChange = (language) => {
-        this.setState({ language })
+        this.setState({ language });
+
+        if (language === 'spanish') {
+            this.setState({ color: 'negative' })
+        } else {
+            this.setState({ color: 'primary' })
+        }
     };
 
     render() {
@@ -19,10 +28,14 @@ export class App extends Component {
                     <i className="flag nl" onClick={() => this.onLanguageChange('dutch')}/>
                     <i className="flag mx" onClick={() => this.onLanguageChange('spanish')}/>
                 </div>
-                <UserCreate />
+                <LanguageContext.Provider value={this.state.language}>
+                    <ColorContext.Provider value={this.state.color}>
+                        <UserCreate />
+                    </ColorContext.Provider>
+                </LanguageContext.Provider>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
-export default App
+export default App;
