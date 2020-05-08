@@ -7,8 +7,8 @@ export class Button extends Component {
         return (
             <button className={`ui button ${color}`}>
                 <LanguageContext.Consumer>
-                    {(value) => {
-                        switch (value) {
+                    {({ language }) => {
+                        switch ({ language }) {
                             case 'english':
                                 return 'Submit';
                             case 'spanish':

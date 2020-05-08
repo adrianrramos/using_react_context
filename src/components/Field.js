@@ -7,8 +7,8 @@ export class Feild extends Component {
             <div className="ui field">
                 <label>
                     <LanguageContext.Consumer>
-                        {(value) => {
-                            switch (value) {
+                        {({ language }) => {
+                            switch (language) {
                                 case 'english':
                                     return 'Name';
                                 case 'spanish':
