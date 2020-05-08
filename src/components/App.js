@@ -13,11 +13,7 @@ export class App extends Component {
     onLanguageChange = (language) => {
         this.setState({ language });
 
-        if (language === 'spanish') {
-            this.setState({ color: 'negative' })
-        } else {
-            this.setState({ color: 'primary' })
-        }
+        language === 'spanish' ? this.setState({ color: 'negative' }) : this.setState({ color: 'primary' });
     };
 
     render() {
